@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: CheckProgramm
-        run: echo "hi"
+        run: pyton3 "test_classes.py"
