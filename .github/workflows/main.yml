@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   testing:
-    runs-on: windows
+    runs-on: ubuntu-latest
     steps:
       - name: CheckProgramm
         run: echo "hi"
