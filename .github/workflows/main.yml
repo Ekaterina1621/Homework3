@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: CheckProgramm
-        run: echo "heee"
+        run: push "test_classes.py"
