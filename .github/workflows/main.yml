@@ -1,14 +1,34 @@
-name: tests
+name: CI
 
-on: [push]
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+  workflow_dispatch:
 
 jobs:
-  testing:
-    runs-on: ubuntu-latest
+  tests:
+    name: "Python ${{ matrix.python-version }}"
+    runs-on: "ubuntu-latest"
+    env:
+      USING_COVERAGE: '3.6,3.8'
+
+    strategy:
+      matrix:
+        python-version: ["3.6", "3.7", "3.8", "pypy3"]
+
     steps:
-      - name: py
+      - uses: "actions/checkout@v2"
+      - uses: "actions/setup-python@v2"
         with:
-              python-version: 3.8
-      - name: CheckProgram
+          python-version: "${{ matrix.python-version }}"
+      - name: "Install dependencies"
         run: |
-          python test_classes.py
+          python -VV
+          python -m site
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install --upgrade coverage[toml] virtualenv tox tox-gh-actions          
+
+      - name: "Run tox targets for ${{ matrix.python-version }}"
+        run: "python -m tox"
