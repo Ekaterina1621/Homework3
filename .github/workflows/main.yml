@@ -10,4 +10,4 @@ jobs:
     runs-on: windows
     steps:
       - name: CheckProgramm
-      - run: echo "hi!!"
+        run: echo "hi!!"
