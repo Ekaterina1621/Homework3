@@ -6,6 +6,8 @@ on:
       - main
 
 jobs:
-  uses:
-    - name: CheckProgramm
-      run: echo "hi!!"
+  testing:
+    runs-on: unubtu-latest
+    steps:
+      - name: CheckProgramm
+        run: echo "hi!!"
