@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: CheckProgramm
-        run: test_classes.py
+        run: cat test_classes.py
