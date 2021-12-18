@@ -9,6 +9,6 @@ jobs:
       - name: py
         with:
               python-version: 3.8
-      - name: CheckProgramm
+      - name: CheckProgram
         run: |
           python test_classes.py
